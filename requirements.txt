@@ -1,0 +1,10 @@
+asgiref==3.12.1
+Django==4.2.30
+Markdown==3.10.3
+packaging==26.3
+pip==26.2.1
+setuptools==83.0.0
+sqlparse==0.6.0
+typing_extensions==4.16.0
+tzdata==2026.4
+wheel==0.47.0
