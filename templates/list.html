@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+商品列表
+{% endblock %}
+
+{% block headmessage %}
+<h3>歌詞世界商品列表</h3>
+{% endblock %}
+
+{% block content %}
+
+<table class="table table-bordered">
+    <tr>
+        <th>品名</th>
+        <th>售價</th>
+        <th>庫存量</th>
+    </tr>
+
+    {% for p in products %}
+    <tr>
+        <td>
+            <a href="/list/{{ p.sku }}/">
+                {{ p.name }}
+            </a>
+        </td>
+        <td>{{ p.price }}</td>
+        <td>{{ p.qty }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="/">回首頁</a>
+
+{% endblock %}

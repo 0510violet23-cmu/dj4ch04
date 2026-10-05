@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block title %}
+關於我
+{% endblock %}
+
+{% block headmessage %}
+<h3 style="font-family:微軟正黑體;">關於我</h3>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+
+    <!-- 左邊：自我介紹 -->
+    <div class="col-md-7">
+
+        <div class="card mb-3">
+
+            <div class="card-header">
+                <h4>👋 自我介紹</h4>
+            </div>
+
+            <div class="card-body">
+
+                <h3 style="font-family:微軟正黑體;">
+                    嗨！這裡是歌詞世界
+                </h3>
+
+                <p style="font-family:微軟正黑體;font-size:16px;">
+                    平常很喜歡聽音樂，不同心情的時候，
+                    也會選擇不同類型的歌曲來聽。
+                </p>
+
+                <p style="font-family:微軟正黑體;font-size:16px;">
+                    因此這次在學習 Django 的過程中，
+                    我把自己的網站設計成「歌詞世界」，
+                    希望讓課堂練習也可以加入一些自己喜歡的元素。
+                </p>
+
+                <p style="font-family:微軟正黑體;font-size:16px;">
+                    目前網站已經加入歌曲文章、商品列表、
+                    商品詳細資料以及資料庫查詢等功能。
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- 右邊：興趣與學習 -->
+    <div class="col-md-5">
+
+        <div class="card mb-3">
+
+            <div class="card-header">
+                <h4>🎵 我的興趣</h4>
+            </div>
+
+            <div class="card-body">
+
+                <p>🎧 聽音樂</p>
+                <p>🏐 運動</p>
+                <p>📚 閱讀</p>
+                <p>💻 玩電腦</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="card mb-3">
+
+            <div class="card-header">
+                <h4>💻 目前學習</h4>
+            </div>
+
+            <div class="card-body">
+
+                <p>Django</p>
+                <p>Python</p>
+                <p>HTML / CSS</p>
+                <p>資料庫操作</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="card">
+
+    <div class="card-header">
+        <h4>🌱 網站小目標</h4>
+    </div>
+
+    <div class="card-body">
+
+        <p style="font-family:微軟正黑體;font-size:16px;">
+            希望之後可以繼續把「歌詞世界」做得更完整，
+            加入更多歌曲分類、搜尋以及自己喜歡的功能，
+            同時也練習把課堂上學到的 Django 功能真正應用在網站中。
+        </p>
+
+    </div>
+
+</div>
+
+<br>
+
+<a href="/" class="btn btn-primary">
+    回首頁
+</a>
+
+{% endblock %}
