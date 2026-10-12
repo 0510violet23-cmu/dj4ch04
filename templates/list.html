@@ -1,16 +1,21 @@
 {% extends 'base.html' %}
 
+{% load humanize %}
+
 {% block title %}
 商品列表
 {% endblock %}
 
 {% block headmessage %}
-<h3>歌詞世界商品列表</h3>
+<h3 style="font-family:微軟正黑體;">
+    歌詞世界商品列表
+</h3>
 {% endblock %}
 
 {% block content %}
 
 <table class="table table-bordered">
+
     <tr>
         <th>品名</th>
         <th>售價</th>
@@ -18,18 +23,31 @@
     </tr>
 
     {% for p in products %}
+
     <tr>
+
         <td>
             <a href="/list/{{ p.sku }}/">
                 {{ p.name }}
             </a>
         </td>
-        <td>{{ p.price }}</td>
-        <td>{{ p.qty }}</td>
+
+        <td>
+            NT${{ p.price | floatformat:2 | intcomma }}
+        </td>
+
+        <td>
+            {{ p.qty }}
+        </td>
+
     </tr>
+
     {% endfor %}
+
 </table>
 
-<a href="/">回首頁</a>
+<a href="/" class="btn btn-secondary">
+    回首頁
+</a>
 
 {% endblock %}

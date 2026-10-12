@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+
+{% block title %}
+新聞直播
+{% endblock %}
+
+{% block headmessage %}
+<h3 style="font-family:微軟正黑體;">
+    📰 新聞直播
+</h3>
+{% endblock %}
+
+{% block content %}
+
+<section id="news-live" style="font-family:微軟正黑體;">
+
+    <h4 class="mb-3">選擇新聞台</h4>
+
+    <!-- 頻道按鈕 -->
+    <div class="d-flex flex-wrap gap-2 mb-3">
+
+        {% for channel in tv_list %}
+
+        <button
+            type="button"
+            class="btn {% if forloop.counter0 == tvno %}btn-primary{% else %}btn-outline-primary{% endif %} news-channel"
+            data-name="{{ channel.name }}"
+            data-video-id="{{ channel.tvcode }}">
+
+            {{ channel.name }}
+
+        </button>
+
+        {% endfor %}
+
+    </div>
+
+
+    <hr>
+
+    <!-- 顯示目前頻道 -->
+    <h5 id="channel-title">
+        目前選擇：{{ tv.name }}新聞
+    </h5>
+
+
+    <!-- YouTube 播放器 -->
+    <div class="ratio ratio-16x9 bg-dark">
+
+       <iframe
+    id="news-player"
+    src="https://www.youtube.com/embed/{{ tv.tvcode }}?playsinline=1"
+    title="{{ tv.name }} YouTube 新聞直播"
+    loading="lazy"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+    allowfullscreen>
+       </iframe>
+
+    </div>
+
+
+    <p class="mt-3">
+
+    如果影片無法播放，可點擊
+
+    <a
+        id="watch-on-youtube"
+        href="https://www.youtube.com/watch?v={{ tv.tvcode }}"
+        target="_blank">
+
+        直接前往 YouTube 的連結
+
+    </a>
+
+</p>
+
+    <hr>
+
+    <a href="/" class="btn btn-secondary">
+        回首頁
+    </a>
+
+</section>
+
+
+<!-- 點按鈕直接切換影片 -->
+<script>
+
+    const buttons =
+        document.querySelectorAll('#news-live .news-channel');
+
+    const player =
+        document.getElementById('news-player');
+
+    const channelTitle =
+        document.getElementById('channel-title');
+
+    const youtubeLink =
+        document.getElementById('watch-on-youtube');
+
+
+    buttons.forEach(function(button) {
+
+        button.addEventListener('click', function() {
+
+            const videoId =
+                button.getAttribute('data-video-id');
+
+            const channelName =
+                button.getAttribute('data-name');
+
+
+            // 更換 YouTube 影片
+            player.src =
+                'https://www.youtube.com/embed/'
+                + videoId
+                + '?playsinline=1';
+
+
+            // 更換標題
+            channelTitle.textContent =
+                '目前選擇：'
+                + channelName
+                + '新聞';
+
+
+            // 更換 YouTube 外部連結
+            youtubeLink.href =
+                'https://www.youtube.com/watch?v='
+                + videoId;
+
+
+            // 切換按鈕顏色
+            buttons.forEach(function(item) {
+
+                item.classList.remove('btn-primary');
+                item.classList.add('btn-outline-primary');
+
+            });
+
+
+            button.classList.remove('btn-outline-primary');
+            button.classList.add('btn-primary');
+
+        });
+
+    });
+
+</script>
+
+{% endblock %}

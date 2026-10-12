@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}
+音樂分類
+{% endblock %}
+
+{% block headmessage %}
+<h3 style="font-family:微軟正黑體;">
+    🎵 音樂分類
+</h3>
+{% endblock %}
+
+{% block content %}
+
+<h4 style="font-family:微軟正黑體;">
+    選擇音樂分類
+</h4>
+
+<br>
+
+<!-- 類別選單 -->
+<div class="mb-3">
+
+    {% for m in music_category %}
+
+        <a href="{% url 'musiclist-url' forloop.counter0 %}"
+           class="btn btn-outline-primary me-2 mb-2">
+
+            {{ m }}
+
+        </a>
+
+    {% endfor %}
+
+</div>
+
+
+<hr>
+
+
+<!-- 顯示目前分類 -->
+<h4 style="font-family:微軟正黑體;">
+    {{ category_name }}
+</h4>
+
+
+{% if songs %}
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>分類</th>
+        <th>內容</th>
+    </tr>
+
+    {% for song in songs %}
+
+    <tr class="{% cycle 'table-light' 'table-secondary' %}">
+
+        <td>
+            {{ category_name }}
+        </td>
+
+        <td>
+            {{ song }}
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% else %}
+
+<div class="alert alert-warning">
+
+    <h5>
+        {{ category_name }}目前沒有資料
+    </h5>
+
+</div>
+
+{% endif %}
+
+
+<br>
+
+<a href="/" class="btn btn-secondary">
+    回首頁
+</a>
+
+{% endblock %}
