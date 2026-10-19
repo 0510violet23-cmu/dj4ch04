@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block title %}
+手機賣場
+{% endblock %}
+
+
+{% block headmessage %}
+<h3 style="font-family:微軟正黑體;">
+    📱 手機賣場
+</h3>
+{% endblock %}
+
+
+{% block content %}
+
+<h4 style="font-family:微軟正黑體;">
+    中古手機商品列表
+</h4>
+
+<br>
+
+{% if products %}
+
+<table class="table table-bordered">
+
+    <thead class="table-secondary">
+        <tr>
+            <th>商品</th>
+            <th>廠牌 / 型號</th>
+            <th>出廠年</th>
+            <th>價格</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    {% for p in products %}
+
+        <tr>
+
+            <td>
+                <a href="{% url 'phone-detail' p.id %}">
+                    {{ p.nickname }}
+                </a>
+            </td>
+
+            <td>
+                {{ p.pmodel.maker.name }} / {{ p.pmodel.name }}
+            </td>
+
+            <td>
+                {{ p.year }}
+            </td>
+
+            <td>
+                NT${{ p.price|intcomma }}
+            </td>
+
+        </tr>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% else %}
+
+<div class="alert alert-warning">
+    目前沒有手機商品
+</div>
+
+{% endif %}
+
+
+<a href="/" class="btn btn-secondary">
+    回首頁
+</a>
+
+{% endblock %}

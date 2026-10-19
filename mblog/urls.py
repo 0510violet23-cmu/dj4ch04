@@ -10,6 +10,7 @@ from mysite.views import (
     news_live,
     musiclist,
 )
+from phone import views as phone_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,5 +32,9 @@ urlpatterns = [
     path('musiclist/', musiclist),
 
     path('musiclist/<int:category>/', musiclist, name='musiclist-url'),
+    
+    path('phone/', phone_views.phone_list, name='phone-list'),
+
+    path('phone/<int:id>/', phone_views.phone_detail, name='phone-detail'),
 
  ]

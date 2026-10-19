@@ -9,12 +9,12 @@ TV_LIST = [
     {
         'name': '中天',
         'tvcode': 'wUPPkSANpyo',
-        'official_url': 'https://www.ctitv.com.tw/'
+        'official_url': 'https://www.youtube.com/live/we6ZSwxyS30?si=6IMPoiE6uN15f80o'
     },
     {
         'name': '華視',
         'tvcode': 'wMOg8EoUZ_E',
-        'official_url': 'https://news.cts.com.tw/live'
+        'official_url': 'https://www.youtube.com/live/wM0g8EoUZ_E?si=tg5mkZOiXlM2S4zm'
     },
     {
         'name': '民視',

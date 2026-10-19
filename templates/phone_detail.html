@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block title %}
+{{ product.nickname|default:"找不到指定的手機" }}
+{% endblock %}
+
+
+{% block headmessage %}
+
+{% if product %}
+
+<h3 style="font-family:微軟正黑體;">
+    📱 {{ product.nickname }}
+</h3>
+
+{% else %}
+
+<h3 style="font-family:微軟正黑體;">
+    找不到指定的手機
+</h3>
+
+{% endif %}
+
+{% endblock %}
+
+
+{% block content %}
+
+{% if product %}
+
+<div class="card">
+
+    <div class="card-body">
+
+        <h4>{{ product.nickname }}</h4>
+
+        <hr>
+
+        <p>
+            <strong>廠牌：</strong>
+            {{ product.pmodel.maker.name }}
+        </p>
+
+        <p>
+            <strong>型號：</strong>
+            {{ product.pmodel.name }}
+        </p>
+
+        <p>
+            <strong>商品說明：</strong>
+            {{ product.description }}
+        </p>
+
+        <p>
+            <strong>出廠年份：</strong>
+            {{ product.year }}
+        </p>
+
+        <p>
+            <strong>售價：</strong>
+            NT${{ product.price|intcomma }}
+        </p>
+
+
+        <hr>
+
+        <h5>商品圖片</h5>
+
+        {% for image in images %}
+
+            <img
+                src="{{ image.url }}"
+                width="350"
+                class="img-fluid mb-3"
+                alt="{{ image.description }}">
+
+            <p>{{ image.description }}</p>
+
+        {% empty %}
+
+            <div class="alert alert-warning">
+                暫無圖片
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+
+<br>
+
+
+<a href="/phone/" class="btn btn-primary">
+    回手機賣場
+</a>
+
+<a href="/" class="btn btn-secondary">
+    回首頁
+</a>
+
+
+{% else %}
+
+<div class="alert alert-danger">
+
+    找不到指定的手機
+
+</div>
+
+<a href="/phone/" class="btn btn-secondary">
+    回手機賣場
+</a>
+
+{% endif %}
+
+{% endblock %}
